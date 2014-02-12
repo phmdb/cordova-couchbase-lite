@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.couchbase.lite.phonegap" version="0.2.0">
+  <name>Couchbase Lite</name>
+  <description>Install Couchbase Lite in your app to enable JSON sync.</description>
+  <license>Apache 2.0</license>
+  <js-module src="www/cblite.js" name="CouchbaseLite">
+    <clobbers target="window.cblite"/>
+  </js-module>
+  <asset src="www/cblite-example.html" target="cblite-example.html"/>
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="CBLite">
+        <param name="ios-package" value="CBLite"/>
+        <param name="onload" value="true"/>
+      </feature>
+    </config-file>
+    <header-file src="src/ios/CBLite.h"/>
+    <source-file src="src/ios/CBLite.m"/>
+    <framework src="libsqlite3.dylib"/>
+    <framework src="libstdc++.dylib"/>
+    <framework src="libicucore.dylib"/>
+    <framework src="libz.dylib"/>
+    <framework src="Security.framework"/>
+    <framework src="CFNetwork.framework"/>
+    <framework src="SystemConfiguration.framework"/>
+  </platform>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CBLite">
+        <param name="android-package" value="com.couchbase.cblite.phonegap.CBLite"/>
+        <param name="onload" value="true"/>
+      </feature>
+    </config-file>
+    <source-file src="src/android/CBLite.java" target-dir="src/com/couchbase/cblite/plugins"/>
+  </platform>
+</plugin>
