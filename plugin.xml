@@ -27,13 +27,4 @@
     <framework src="CFNetwork.framework"/>
     <framework src="SystemConfiguration.framework"/>
   </platform>
-  <platform name="android">
-    <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="CBLite">
-        <param name="android-package" value="com.couchbase.cblite.phonegap.CBLite"/>
-        <param name="onload" value="true"/>
-      </feature>
-    </config-file>
-    <source-file src="src/android/CBLite.java" target-dir="src/com/couchbase/cblite/plugins"/>
-  </platform>
 </plugin>
